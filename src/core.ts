@@ -10,8 +10,11 @@ export const getElement = (
 export const validateElement = (
     element: HTMLElement
 ): void => {
-    if (!element) throw new Error("Invalid Target! (cm-typing-effect)")
-    if (!element.textContent) throw new Error("Element Without Text! (cm-typing-effect)")
+    if (!element) throw new Error("Invalid Target Element! (cm-typing-effect)")
+    if (!element.textContent) throw new Error("Target Element Without Text! (cm-typing-effect)")
+    if (element.children.length != 0) throw new Error(
+        "Target Element Has Internal Tags! (cm-typing-effect)"
+    )
 }
 
 export const insertElementsInTarget = (

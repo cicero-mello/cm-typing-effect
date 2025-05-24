@@ -1,17 +1,18 @@
 {
     "name": "cm-typing-effect",
-    "version": "1.0.4",
+    "version": "1.0.8",
     "description": "Typing animation effect for web elements with customizable caret and timing.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "type": "module",
     "packageManager": "pnpm@10.11.0",
     "scripts": {
-        "build": "tsc"
+        "build": "tsup"
     },
     "author": "Cícero Mello",
     "license": "MIT",
     "devDependencies": {
+        "tsup": "^8.5.0",
         "typescript": "^5.8.3"
     },
     "repository": {

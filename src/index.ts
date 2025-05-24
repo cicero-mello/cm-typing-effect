@@ -14,10 +14,11 @@ import {
 
 /**
  * Starts a typing animation on a given HTML element or element ID.
- * Requires text content with a monospaced font and no full-width characters.
+ * Requires text content with a monospaced font, no full-width characters and
+ * no tags inside target element.
  *
  * `Tip`: To keep the target element hidden before the animation starts,
- * use `visibility: hidden` (CSS) on it.
+ * use `visibility: hidden` on it.
  *
  * @param target - HTML element or ID of the element where
  * the typing animation will occur.

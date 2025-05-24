@@ -36,8 +36,8 @@ export function App() {
         })
     }
 
-    // Triggering after initial render
-    // (but you can trigger wherever you wants)
+    // Triggering right after initial render
+    // (but you can trigger any moment after that)
     useEffect(() => { animate() }, [])
 
     return (
@@ -60,7 +60,7 @@ export function App() {
 ```
 
 ## Tips
-### - To keep the target element hidden before the animation, use `visibility: hidden` (CSS) on them.
+### - To keep the target element hidden before the animation, use `visibility: hidden` on them.
 \- You can customize even more using the css classes:
 `caret-cm-typing-effect`,
 `text-cm-typing-effect`,
@@ -83,6 +83,6 @@ export function App() {
 
 ## Requirements (current version)
 
-- The target element must have text content.
+- The target element must have ONLY text content (no tags).
 - Text content should use a monospaced font.
 - No Full-Width characters are supported.
