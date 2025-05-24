@@ -5,9 +5,9 @@
 ![Demo](https://raw.githubusercontent.com/cicero-mello/cm-typing-effect/refs/heads/main/demo.gif)
 ## **Function: `startTyping`**
 
-`startTyping` creates a typing animation in a target element and returns a promise that resolves when all animation ends.
+`startTyping` creates a typing animation in a target element and returns a promise that resolves when the animation is complete.
 
-To inform the target, you can pass your id, or the element itself.
+To specify the target, you can pass its ID or the element itself.
 
 ## General Usage Example:
 ```typescript
@@ -60,18 +60,18 @@ export function App() {
 ```
 
 ## Tips
-### - To keep the target element hide before animation, uses `visibility: hidden` (css) in them.
+### - To keep the target element hidden before the animation, use `visibility: hidden` (CSS) on them.
 \- You can customize even more using the css classes:
 `caret-cm-typing-effect`,
 `text-cm-typing-effect`,
-`wrapper-cm-typing-effect`
+`wrapper-cm-typing-effect`.
 
 ## Options
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `startDelay` | `number` | `0` | Time in milliseconds before typing animation starts. Caret will be blinking during this time. |
-| `endDelay` | `number` | `0` | Time in milliseconds before typing animation ends. Caret will be blinking alone during this time. |
+| `endDelay` | `number` | `0` | Time in milliseconds before typing animation ends. Caret will be blinking during this time. |
 | `realisticTyping` | `boolean` | `false` | When true, caret blinks only when typing stops. |
 | `keepCaretBlinkingAfterEnd` | `boolean` | `false` | Keep the caret blinking after typing ends. |
 | `animationTime` | `number` | `1000` | Total duration (in ms) for typing animation. |
@@ -83,6 +83,6 @@ export function App() {
 
 ## Requirements (current version)
 
-- The target element must have text content
-- Text content should use a monospaced font
-- No Full-Width characters are supported
+- The target element must have text content.
+- Text content should use a monospaced font.
+- No Full-Width characters are supported.

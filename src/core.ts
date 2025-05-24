@@ -10,8 +10,8 @@ export const getElement = (
 export const validateElement = (
     element: HTMLElement
 ): void => {
-    if (!element) throw new Error("Invalid Target!")
-    if (!element.textContent) throw new Error("Element Without Text!")
+    if (!element) throw new Error("Invalid Target! (cm-typing-effect)")
+    if (!element.textContent) throw new Error("Element Without Text! (cm-typing-effect)")
 }
 
 export const insertElementsInTarget = (

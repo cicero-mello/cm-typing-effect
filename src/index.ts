@@ -14,15 +14,15 @@ import {
 
 /**
  * Starts a typing animation on a given HTML element or element ID.
- * Requires text content with monospaced font and no Full-Width characters.
+ * Requires text content with a monospaced font and no full-width characters.
  *
- * `Tip`: to keep the target element hide before animation,
- * uses `visibility: hidden` (css) in them.
+ * `Tip`: To keep the target element hidden before the animation starts,
+ * use `visibility: hidden` (CSS) on it.
  *
  * @param target - HTML element or ID of the element where
  * the typing animation will occur.
  * @param options - Configuration object for the typing animation.
- * @returns Returns Promise<void> that resolves when all animation ends.
+ * @returns A Promise<void> that resolves when the animation is complete.
  *
  */
 export const startTyping = (
