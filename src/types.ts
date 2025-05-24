@@ -1,6 +1,7 @@
 export interface StartTypingOptions {
     /** Time in milliseconds before typing animation starts.
-     * Default: `0`
+     *  (Caret will be blinking alone during this.)
+     *  Default: `0`
      */
     startDelay?: number
 
@@ -9,10 +10,10 @@ export interface StartTypingOptions {
      */
     endDelay?: number
 
-    /** Realistic typing: caret blinks only when typing stops.
+    /** Caret blinks only when typing stops.
      *  Default: `false`
      */
-    realisticMode?: boolean
+    realisticTyping?: boolean
 
     /** Keep the caret blinking after typing ends.
      *  Default: `false`
@@ -30,7 +31,7 @@ export interface StartTypingOptions {
     caret?: string
 
     /** Speed of the caret blinking in blinks per second.
-     *  Default: `1`
+     *  Default: `1.6`
      */
     caretBlinkingSpeed?: number
 
@@ -44,4 +45,9 @@ export interface StartTypingOptions {
      *  Default `0`
      */
     caretOffset?: number
+
+    /** Make a erase animation.
+     *  Default `false`
+     */
+    eraseMode?: boolean
 }

@@ -1,27 +1,42 @@
-import { animateCaret, animateText, getElement, insertElementsInTarget, insertStyles, makeCaretAbsolute, validateElement } from "./core"
 import { StartTypingOptions } from "./types"
+import {
+    animateCaret,
+    animateText,
+    delay,
+    getElement,
+    insertElementsInTarget,
+    insertStyles,
+    makeCaretAbsolute,
+    removeAnimation,
+    validateElement,
+    verifyTargetElementVisibility,
+} from "./core"
 
 /**
  * Starts a typing animation on a given HTML element or element ID.
+ * Requires text content with monospaced font and no Full-Width characters.
  *
- * @param target - HTML element or ID of the element where the typing animation will occur
+ * @param target - HTML element or ID of the element where
+ * the typing animation will occur.
  * @param options - Configuration object for the typing animation.
- * @returns Returns `null` (placeholder — implement your logic here)
+ * @returns Returns Promise<void> that resolves when all animation ends.
+ *
  */
 export const startTyping = (
     target: HTMLElement | string,
     {
         startDelay = 0,
         endDelay = 0,
-        realisticMode = false,
+        realisticTyping = false,
         keepCaretBlinkingAfterEnd = false,
         animationTime = 1000,
         caret = "|",
-        caretBlinkingSpeed = 1,
+        caretBlinkingSpeed = 1.6,
         caretTakeSpace = false,
-        caretOffset = 0
+        caretOffset = 0,
+        eraseMode = false
     }: StartTypingOptions = {}
-): null => {
+): Promise<void> => new Promise(async (resolve) => {
 
     const element = getElement(target)
     validateElement(element)
@@ -34,20 +49,35 @@ export const startTyping = (
             element.textContent!.trim().slice(0, -caret.length) :
             element.textContent!.trim()
     )
+    const keyTaps = text.length
 
     const {
         caretElement,
-        textElement,
-        wrapperElement
+        textElement
     } = insertElementsInTarget(element, text, caret)
 
     if (!caretTakeSpace) {
-        makeCaretAbsolute(caretElement, wrapperElement, caretOffset)
+        makeCaretAbsolute(caretElement, caretOffset)
     }
 
-    insertStyles()
-    animateText(textElement, text.length, animationTime)
+    insertStyles(eraseMode, textElement, keyTaps)
+    verifyTargetElementVisibility(element)
     animateCaret(caretElement, caretBlinkingSpeed)
 
-    return null
-}
+    await delay(startDelay)
+    if (realisticTyping) removeAnimation(caretElement)
+
+    animateText(
+        textElement,
+        keyTaps,
+        animationTime,
+        eraseMode
+    )
+    await delay(animationTime)
+
+    animateCaret(caretElement, caretBlinkingSpeed)
+    await delay(endDelay)
+    if (!keepCaretBlinkingAfterEnd) caretElement.remove()
+
+    resolve()
+})

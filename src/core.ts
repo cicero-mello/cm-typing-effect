@@ -43,7 +43,11 @@ export const insertElementsInTarget = (
     }
 }
 
-export const insertStyles = () => {
+export const insertStyles = (
+    reverseMode: boolean,
+    textElement: HTMLElement,
+    keyTaps: number
+) => {
     const styleId = "cm-typing-effect-styles"
     if (!document.getElementById(styleId)) {
         const style = document.createElement("style")
@@ -52,28 +56,53 @@ export const insertStyles = () => {
             @keyframes blinking-cm-typing-effect {
                 50% { color: transparent; }
             }
-
             @keyframes typing-cm-typing-effect {
                 from { width: 0; }
             }
-
+            .wrapper-cm-typing-effect {
+                display: flex;
+                width: fit-content;
+                position: relative;
+            }
             .text-cm-typing-effect {
                 display: flex;
                 height: 100%;
                 overflow: hidden;
                 white-space: nowrap;
+                width: 0;
+            }
+            .caret-cm-typing-effect {
+                user-select: none;
             }
         `
         document.head.appendChild(style)
     }
+
+    if (reverseMode) {
+        makeTextElementFullWidth(textElement, keyTaps)
+    }
+}
+
+export const makeTextElementFullWidth = (
+    textElement: HTMLElement,
+    keyTaps: number
+) => {
+    textElement.style.width = keyTaps + "ch"
 }
 
 export const animateText = (
     textElement: HTMLElement,
     keyTaps: number,
-    animationTime: number
+    animationTime: number,
+    eraseMode: boolean
 ) => {
-    textElement.style.width = keyTaps + "ch"
+    makeTextElementFullWidth(textElement, keyTaps)
+    if (eraseMode) {
+        textElement.style.animation = (
+            `typing-cm-typing-effect ${animationTime}ms steps(${keyTaps}) reverse forwards`
+        )
+        return
+    }
     textElement.style.animation = (
         `typing-cm-typing-effect ${animationTime}ms steps(${keyTaps})`
     )
@@ -83,20 +112,32 @@ export const animateCaret = (
     caretElement: HTMLElement,
     caretBlinkingSpeed: number
 ) => {
+    const time = (1 / caretBlinkingSpeed).toFixed(2)
     caretElement.style.animation = (
-        `blinking-cm-typing-effect ${caretBlinkingSpeed}s step-end infinite`
+        `blinking-cm-typing-effect ${time}s step-end infinite`
     )
 }
 
+export const removeAnimation = (
+    element: HTMLElement
+) => element.style.removeProperty("animation")
+
 export const makeCaretAbsolute = (
     caretElement: HTMLElement,
-    wrapperElement: HTMLElement,
     caretOffset: number
 ) => {
-    wrapperElement.style.display = "flex"
-    wrapperElement.style.position = "relative"
-    wrapperElement.style.width = "fit-content"
-
     caretElement.style.position = "absolute"
     caretElement.style.left = `calc(100% + ${caretOffset}px)`
 }
+
+export const verifyTargetElementVisibility = (
+    element: HTMLElement
+) => {
+    if (element.style.visibility === "hidden") {
+        element.style.removeProperty("visibility")
+    }
+}
+
+export const delay = (time: number) => new Promise((resolve) => {
+    setTimeout(() => resolve(true), time)
+})
