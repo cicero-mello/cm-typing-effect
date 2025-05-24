@@ -1,6 +1,6 @@
 {
     "name": "cm-typing-effect",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Typing animation effect for web elements with customizable caret and timing.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

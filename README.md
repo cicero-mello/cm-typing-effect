@@ -1,6 +1,6 @@
 # cm-typing-effect
-[![npm](https://img.shields.io/npm/v/cm-ricochet)](https://www.npmjs.com/package/cm-typing-effect)
-[![npm bundle size](https://img.shields.io/bundlephobia/minzip/cm-ricochet)](https://bundlephobia.com/package/cm-typing-effect)
+[![npm](https://img.shields.io/npm/v/cm-typing-effect)](https://www.npmjs.com/package/cm-typing-effect)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/cm-typing-effect)](https://bundlephobia.com/package/cm-typing-effect)
 
 ![Demo](https://raw.githubusercontent.com/cicero-mello/cm-typing-effect/refs/heads/main/demo.gif)
 ## **Function: `startTyping`**
