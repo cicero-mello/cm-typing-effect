@@ -6,6 +6,7 @@ export interface StartTypingOptions {
     startDelay?: number
 
     /** Time in milliseconds before typing animation ends.
+     *  (Caret will be blinking during this.)
      *  Default: `0`
      */
     endDelay?: number

@@ -16,6 +16,9 @@ import {
  * Starts a typing animation on a given HTML element or element ID.
  * Requires text content with monospaced font and no Full-Width characters.
  *
+ * `Tip`: to keep the target element hide before animation,
+ * uses `visibility: hidden` (css) in them.
+ *
  * @param target - HTML element or ID of the element where
  * the typing animation will occur.
  * @param options - Configuration object for the typing animation.

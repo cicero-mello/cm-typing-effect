@@ -1,7 +1,7 @@
 {
     "name": "cm-typing-effect",
     "version": "1.0.0",
-    "description": "Description...",
+    "description": "Typing animation effect for web elements with customizable caret and timing.",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "type": "module",
@@ -9,7 +9,7 @@
     "scripts": {
         "build": "tsc"
     },
-    "author": "Cícero Mello <ciceromello.dev@gmail.com>",
+    "author": "Cícero Mello",
     "license": "MIT",
     "devDependencies": {
         "typescript": "^5.8.3"
@@ -18,10 +18,32 @@
         "type": "git",
         "url": "git+https://github.com/cicero-mello/cm-typing-effect.git"
     },
+    "homepage": "https://github.com/cicero-mello/cm-typing-effect#readme",
     "bugs": {
         "url": "https://github.com/cicero-mello/cm-typing-effect/issues"
     },
+    "files": [
+        "dist",
+        "README.md",
+        "LICENSE"
+    ],
     "keywords": [
-        "keyword..."
+        "typing-effect",
+        "typing",
+        "typewriter",
+        "text-animation",
+        "animated-text",
+        "typing-animation",
+        "react-typing",
+        "typescript",
+        "text-effect",
+        "caret-animation",
+        "monospace",
+        "javascript",
+        "typescript",
+        "react",
+        "vanilla",
+        "web-animation",
+        "promise-based"
     ]
 }
