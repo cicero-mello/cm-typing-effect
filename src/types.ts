@@ -1,16 +1,47 @@
 export interface StartTypingOptions {
-    /** Time in milliseconds before typing animation starts. Default: `0` */
+    /** Time in milliseconds before typing animation starts.
+     * Default: `0`
+     */
     startDelay?: number
-    /** Time in milliseconds before typing animation ends. Default: `0` */
+
+    /** Time in milliseconds before typing animation ends.
+     *  Default: `0`
+     */
     endDelay?: number
-    /** Realistic typing: caret blinks only when typing stops. Default: `false` */
+
+    /** Realistic typing: caret blinks only when typing stops.
+     *  Default: `false`
+     */
     realisticMode?: boolean
-    /** Keep the caret blinking after typing ends. Default: `false` */
+
+    /** Keep the caret blinking after typing ends.
+     *  Default: `false`
+     */
     keepCaretBlinkingAfterEnd?: boolean
-    /** Total duration (in ms) for typing animation. Default: `1000` */
+
+    /** Total duration (in ms) for typing animation.
+     *  Default: `1000`
+     */
     animationTime?: number
-    /** Custom character for the caret. Default: `"|"` */
+
+    /** Custom character for the caret.
+     *  Default: `"|"`
+     */
     caret?: string
-    /** Speed of the caret blinking in blinks per second. Default: `1` */
+
+    /** Speed of the caret blinking in blinks per second.
+     *  Default: `1`
+     */
     caretBlinkingSpeed?: number
+
+    /** Make caret take space of the target element.
+     *  Default `false`
+     */
+    caretTakeSpace?: boolean
+
+    /** Horizontal caret offset in px.
+     *  Can't be used with "caretTakeSpace: true".
+     *  Default `0`
+     */
+    caretOffset?: number
 }

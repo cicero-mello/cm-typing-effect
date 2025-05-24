@@ -1,4 +1,4 @@
-import { getElement, insertKeyframes, validateElement } from "./core"
+import { animateCaret, animateText, getElement, insertElementsInTarget, insertStyles, makeCaretAbsolute, validateElement } from "./core"
 import { StartTypingOptions } from "./types"
 
 /**
@@ -16,29 +16,38 @@ export const startTyping = (
         realisticMode = false,
         keepCaretBlinkingAfterEnd = false,
         animationTime = 1000,
-        caret = "|"
+        caret = "|",
+        caretBlinkingSpeed = 1,
+        caretTakeSpace = false,
+        caretOffset = 0
     }: StartTypingOptions = {}
 ): null => {
+
     const element = getElement(target)
-
     validateElement(element)
-    insertKeyframes()
 
-    const text = element.textContent!.trim()
-    const charactersQuantity = text.length
-
-    element.innerHTML = `<span>${text}</span>`
-
-    const span = element.querySelector("span")!
-    span.style.display = "flex"
-    span.style.height = "100%"
-    span.style.width = charactersQuantity + "ch"
-    span.style.overflow = "hidden"
-    span.style.whiteSpace = "nowrap"
-
-    span.style.animation = (
-        `typing-cm-typing-effect ${animationTime}ms steps(${charactersQuantity})`
+    const targetHasCaret = !!element.querySelector(
+        ".caret-cm-typing-effect"
     )
+    const text = (
+        targetHasCaret ?
+            element.textContent!.trim().slice(0, -caret.length) :
+            element.textContent!.trim()
+    )
+
+    const {
+        caretElement,
+        textElement,
+        wrapperElement
+    } = insertElementsInTarget(element, text, caret)
+
+    if (!caretTakeSpace) {
+        makeCaretAbsolute(caretElement, wrapperElement, caretOffset)
+    }
+
+    insertStyles()
+    animateText(textElement, text.length, animationTime)
+    animateCaret(caretElement, caretBlinkingSpeed)
 
     return null
 }
